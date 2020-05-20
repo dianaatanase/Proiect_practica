@@ -1,1 +1,3 @@
 # Proiect_practica
+
+adawdada 
