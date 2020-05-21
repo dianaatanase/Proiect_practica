@@ -1,12 +1,11 @@
-import React from 'react';
+import React from "react";
+import Cell from "../Cell";
 
 const Row = props => {
-    console.log(props);
-    return (
-        <div>
-        
-        </div>
-    );
+  let cells = props.cells.map((data, index) => (
+    <Cell data={data} open={props.open} flag={props.flag} key={index} />
+  ));
+  return <div className="row">{cells}</div>;
 };
 
 export default Row;

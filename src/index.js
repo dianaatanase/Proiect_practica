@@ -1,10 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import MinesweeperGame from './MinesweeperGame';
+import React from "react";
+import { render } from "react-dom";
+import "./index.css";
+import "./styles/base.css"
+import App from "./App";
 
-ReactDOM.render(
-    <MinesweeperGame />,
-  document.getElementById('root')
-);
-
+render(<App />, document.getElementById("root"));
