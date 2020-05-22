@@ -8,7 +8,7 @@ const Cell = props => {
           <div
             className="cell open"
             onContextMenu={e => {
-              // don't load that nasty context menu, flag it up instead :^)
+             
               e.preventDefault();
             }}
             onClick={() => props.open(props.data)}
@@ -21,7 +21,7 @@ const Cell = props => {
           <div
             className="cell open"
             onContextMenu={e => {
-              // don't load that nasty context menu, flag it up instead :^)
+             
               e.preventDefault();
               props.flag(props.data);
             }}
@@ -33,7 +33,7 @@ const Cell = props => {
           <div
             className="cell open"
             onContextMenu={e => {
-              // don't load that nasty context menu, flag it up instead :^)
+              
               e.preventDefault();
             }}
             onClick={() => props.open(props.data)}
@@ -47,7 +47,7 @@ const Cell = props => {
         <div
           className="cell open-flag"
           onContextMenu={e => {
-            // don't load that nasty context menu, flag it up instead :^)
+            
             e.preventDefault();
             props.flag(props.data);
           }}
@@ -61,7 +61,7 @@ const Cell = props => {
         <div
           className="cell"
           onContextMenu={e => {
-            // don't load that nasty context menu, flag it up instead :^)
+            
             e.preventDefault();
             props.flag(props.data);
           }}

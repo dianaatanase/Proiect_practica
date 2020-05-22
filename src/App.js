@@ -83,7 +83,7 @@ class App extends Component {
   render() {
     return (
       <div className="minesweeper">
-        <h1>Welcome to minesweeper.</h1>
+        <h1>Hai la o bombiță!</h1>
         <BoardHead
           time={this.state.time}
           flagsUsed={this.state.flagCount}

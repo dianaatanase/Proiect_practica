@@ -22,7 +22,7 @@ class Board extends Component {
   }
 
   createBoard = props => {
-    // create 2d grid for our board based off the number of columns and rows passed in from props
+       // cream o structura tabelara in fucntie de numarul de linii si coloane date de props
     let board = [];
     for (let i = 0; i < props.rows; i++) {
       board.push([]);
@@ -37,7 +37,7 @@ class Board extends Component {
         });
       }
     }
-    // after we create the board we gotta add our mines randomly!
+      // selectam aleator niste pozitii unde sa apara mine
     for (let i = 0; i < props.mines; i++) {
       let randomRow = Math.floor(Math.random() * props.rows);
       let randomCol = Math.floor(Math.random() * props.columns);
@@ -45,7 +45,8 @@ class Board extends Component {
       let cell = board[randomRow][randomCol];
 
       if (cell.hasMine) {
-        // if it already has a mine send it back one in the loop and go to another random cell
+       // daca avem o mina in celula respectiva, decrementam i si cautam, in aceeasi etapa a buclei, o celula libera
+        // altfel s-ar pune pe tabla cu o mina mai putin, pentru ca in aceeasi celula nu se pot pune 2 mine
         i--;
       } else {
         cell.hasMine = true;
@@ -54,7 +55,7 @@ class Board extends Component {
     return board;
   };
 
-  // create function to turn on and off flags
+  // cream o functie pentru a porni/opri flag-urile
   flag = cell => {
     if (this.props.status === "ended") {
       return;
@@ -70,7 +71,7 @@ class Board extends Component {
     if (this.props.status === "ended") {
       return;
     }
-    // first we need to find mines around it asynchronously. this is IMPORTANT, because we need to make sure we calculate the mines before anything else runs!!!
+     // va trebui sa calculam numarul minelor din jurul celulei, altfel nu respecta logica jocului
     let asyncCountMines = new Promise(resolve => {
       let mines = this.findMines(cell);
       resolve(mines);
@@ -95,7 +96,7 @@ class Board extends Component {
           current.count = numberOfMines;
 
           this.setState({ rows });
-          // now that we know its not a flag and its not a BOMB we should try to open cells around it!
+         // daca stim ca celula nu contine nici flag si nici mina, atunci incercam sa deschidem celule din jurul ei in continuare
           if (!current.hasMine && numberOfMines === 0) {
             this.openAroundCell(cell);
           }
@@ -110,7 +111,7 @@ class Board extends Component {
 
   findMines = cell => {
     let minesInProximity = 0;
-    // look for mines in a 1 cell block around the chosen cell
+       // cautam in blocul celulelor vecine daca exista mine
     for (let row = -1; row <= 1; row++) {
       for (let col = -1; col <= 1; col++) {
         if (cell.y + row >= 0 && cell.x + col >= 0) {
@@ -134,7 +135,7 @@ class Board extends Component {
   openAroundCell = cell => {
     let rows = this.state.rows;
 
-    // we're gonna loop through each cell and open cells one by one in each row around it until we find one with a mine in it
+     // parcurgem celula cu celula pana cand gasim o mina
     for (let row = -1; row <= 1; row++) {
       for (let col = -1; col <= 1; col++) {
         if (cell.y + row >= 0 && cell.x + col >= 0) {
